@@ -66,8 +66,28 @@ car.starting();
     console.log(a);
   })();
 
-function sum(x, y) {
-    if (!y) y = 1;
-    console.log(x + y);
+//function sum(x, y) {
+//    if (!y) y = 1;
+//    console.log(x + y);
+//}
+//console.log(sum(3));
+
+console.log("테스트");
+
+var number = [];
+var isTrue = true;
+while(isTrue){
+  var input = prompt("숫자를 입력하시오");
+  if(input==null){
+    isTrue = false;
+  }
+  else{
+    input = parseInt(input);
+    number.push(input);
+  }
 }
-console.log(sum(3));
+var sum = 0;
+number.forEach(function(num){
+  sum = sum + num;
+});
+alert("숫자의 총 합:"+sum);
