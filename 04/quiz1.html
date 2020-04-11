@@ -51,7 +51,7 @@
 
     var next = document.getElementById("next");
     function clickNext(){
-        if(currPhoto+3<todayPhoto.length){
+        if(currPhoto+numPhoto<todayPhoto.length){
             currPhoto = currPhoto + numPhoto;
             currPage = currPage + 1;
             viewPhoto(currPhoto);
