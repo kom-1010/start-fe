@@ -3,6 +3,12 @@
 <head>
     <meta charset=utf-8 />
     <title>source</title>
+    <style>
+        #board{
+            width: 400px;
+            border: 5px solid #999;
+        }
+    </style>
 </head>
 <body>
 
@@ -27,10 +33,57 @@
     //-->
 </div>
 <script>
+    
     var board = document.getElementById("board");
-    for(var i=0; i<4; i++){
-        for(var j=0; j<4; j++){
-            // TODO : 여기에 필요한 코드를 작성해주세요.
+    var row = 4;
+    var column = 4;
+ 
+    for(var i=0; i<row; i++){
+        for(var j=0; j<column; j++){
+            var span = document.createElement('span');
+            board.appendChild(span);
+            span.style.width = "100px";
+            span.style.height = "100px";
+            span.style.display = "inline-block";
+        }
+    var br = document.createElement("br");
+    board.appendChild(br);
+    }
+
+    chessFormColor(row);    //체스판 색칠 함수
+    chessFormClick(row);       //책스판 클릭 함수
+
+    function chessFormColor(r){
+        var spanColor = document.querySelectorAll("span");
+        var countColumn = 0;
+        for(var i=0;i<spanColor.length;i++){
+            if(i%r==0) countColumn += 1;
+            if(countColumn%2==0){   //짝수열의 체스판의 색
+                if(i%2==0) {
+                    spanColor[i].style.backgroundColor = "white";
+                }
+                else {
+                    spanColor[i].style.backgroundColor = "black";
+                }
+            }
+            else{
+                if(i%2==0) {        //홀수열의 체스판의 색
+                    spanColor[i].style.backgroundColor = "black";
+                }
+                else {
+                    spanColor[i].style.backgroundColor = "white";
+                }
+            }
+        }
+    }
+
+    function chessFormClick(r){
+        var spanClick = document.querySelectorAll("span");
+        for(var i=0;i<spanClick.length;i++){
+            spanClick[i].addEventListener('click', function(event){
+                chessFormColor(r);
+                event.target.style.backgroundColor = "red";
+            });
         }
     }
 </script>
