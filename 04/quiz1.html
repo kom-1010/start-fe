@@ -31,15 +31,17 @@
     ];
 
     var wrap = document.getElementById('wrap');
-    var currPhoto = 0;
-    var currPage = 1;
+    var currPhoto = 0;                  // 현재 출력되는 사진의 시작 위치
+    var currPage = 1;                   // 현재 페이지
+    var totalPhoto = todayPhoto.length; //총 사진의 갯수
+    var numPhoto = 3;                   //화면에 출력되는 사진의 수
     viewPhoto(currPhoto);
     movePage(currPage);
 
     var prev = document.getElementById("prev");
     function clickPrev(){
         if(currPhoto>0){
-            currPhoto = currPhoto - 3;
+            currPhoto = currPhoto - numPhoto;
             currPage = currPage - 1;
             viewPhoto(currPhoto);
             movePage(currPage);
@@ -50,7 +52,7 @@
     var next = document.getElementById("next");
     function clickNext(){
         if(currPhoto+3<todayPhoto.length){
-            currPhoto = currPhoto + 3;
+            currPhoto = currPhoto + numPhoto;
             currPage = currPage + 1;
             viewPhoto(currPhoto);
             movePage(currPage);
@@ -64,7 +66,7 @@
         }
 
         var str = '';
-        for(var i=cp; i<cp+3; i++){
+        for(var i=cp; i<cp+numPhoto; i++){
             if(i>=0 && i<todayPhoto.length){
                 str += '<img src="'+todayPhoto[i].img+'"> ';
             }
@@ -74,7 +76,7 @@
 
     function movePage(pg){
         var page = document.getElementById('page');
-        page.innerHTML = pg + " / 10";
+        page.innerHTML = pg + " / " + totalPhoto;
     }
 </script>
 
