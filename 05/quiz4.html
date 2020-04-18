@@ -31,17 +31,18 @@
 
     <script>
         var box = document.getElementById("box");
+        
         boxDrag(box);
 
         function boxDrag(ele){ 
             var x1 = 0, x2 = 0, y1 = 0, y2 = 0;
-            ele.onmousedown = boxDown; 
+            ele.addEventListener('mousedown', boxDown)
             
             function boxDown(e) { 
                 x1 = e.clientX; 
                 y1 = e.clientY; 
-                document.onmousemove = boxMove;
-                document.onmouseup = boxUp; 
+                document.addEventListener('mousemove', boxMove)
+                document.addEventListener('mouseup', boxUp) 
             }
 
             function boxMove(e) { 
@@ -54,8 +55,8 @@
             }
 
             function boxUp() { 
-                document.onmouseup = null; 
-                document.onmousemove = null; 
+                document.removeEventListener('mouseup', boxUp)
+                document.removeEventListener('mousemove', boxMove)
             } 
         }
     </script>
